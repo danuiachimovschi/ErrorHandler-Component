@@ -1,0 +1,15 @@
+{
+    "name": "eskimo/error-handler",
+    "autoload": {
+        "psr-4": {
+            "ErrorHandler\\": "ErrorHandler/"
+        }
+    },
+    "authors": [
+        {
+            "name": "danublueline",
+            "email": "danu@bludelego.it"
+        }
+    ],
+    "require": {}
+}
