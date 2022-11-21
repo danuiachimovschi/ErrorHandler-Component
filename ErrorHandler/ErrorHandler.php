@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace ErrorHandler;
 
-use ErrorHandler\RegistErrorHandler;
+use Throwable;
 use ErrorHandler\Interfaces\ErrorHandlerInterface;
 
-class ErrorHandler extends RegistErrorHandler implements ErrorHandlerInterface
+class ErrorHandler extends RegistHandler implements ErrorHandlerInterface
 {
     public function handleError(
         int $errno,
@@ -16,8 +16,19 @@ class ErrorHandler extends RegistErrorHandler implements ErrorHandlerInterface
         int $errline
     ): bool
     {
-        var_dump($errno);
+        dump($errno, $errfile, $errstr, $errline);
 
         return true;
+    }
+
+    public function handleException(Throwable $exception): void
+    {
+        dump($exception);
+    }
+
+    public function setProductionMode(): void
+    {
+        set_error_handler(null);
+        error_reporting(0);
     }
 }
